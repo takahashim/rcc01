@@ -11,6 +11,7 @@ default: &default
 
 development:
   <<: *default
+  user: bs2_development
   database: bs2_development
 
 # Warning: The database defined as "test" will be erased and
@@ -18,12 +19,15 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
+  user: bs2_test
   database: bs2_test
 
 staging:
   <<: *default
+  user: bs2_staging
   database: bs2_staging
 
 production:
   <<: *default
+  user: bs2_production
   database: bs2_production
