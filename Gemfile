@@ -39,7 +39,7 @@ gem 'font-awesome-rails'
 gem 'jquery-rails'
 gem 'simple_form'
 gem 'kaminari'
-# gem 'turbolinks'
+gem 'turbolinks'
 
 # Server
 gem 'puma'

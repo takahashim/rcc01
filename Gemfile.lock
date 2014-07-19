@@ -235,6 +235,8 @@ GEM
     treetop (1.4.15)
       polyglot
       polyglot (>= 0.3.1)
+    turbolinks (2.2.2)
+      coffee-rails
     tzinfo (1.2.1)
       thread_safe (~> 0.1)
     uglifier (2.5.3)
@@ -294,6 +296,7 @@ DEPENDENCIES
   spring
   tapp
   thin
+  turbolinks
   uglifier (>= 1.3.0)
   unf
   validates_email_format_of
