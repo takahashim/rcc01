@@ -18,7 +18,7 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  username: bs2_test
+  username: bs2_development
   database: bs2_test
 
 staging:
