@@ -1,0 +1,90 @@
+!!!
+%html
+  %head
+    %title RoCCou
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+    %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
+  %body
+    .header
+      .container
+        .row
+          .col-md-4
+            / Logo
+            .logo
+              %h1
+                %a{:href => "/"} DocBuild
+          .col-md-5
+            .row
+              .col-lg-12
+                .input-group.form
+                  %input.form-control{:placeholder => "Search...", :type => "text"}/
+                  %span.input-group-btn
+                    %button.btn.btn-primary{:type => "button"} Search
+          .col-md-3
+            .navbar.navbar-inverse{:role => "banner"}
+              %nav.collapse.navbar-collapse.bs-navbar-collapse.navbar-right{:role => "navigation"}
+                %ul.nav.navbar-nav
+                  %li.dropdown
+                    %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+                      My Account
+                      %b.caret
+                    %ul.dropdown-menu.animated.fadeInUp
+                      %li
+                        %a{:href => "#"} Profile
+                      %li
+                        %a{:href => "/auth/github"} Login
+    .page-content
+      .row
+        .col-md-2
+          .sidebar.content-box{:style => "display: block;"}
+            %ul.nav
+              / Main menu
+              %li.current
+                %a{:href => "index.html"}
+                  %i.glyphicon.glyphicon-home
+                  Dashboard
+              %li
+                %a{:href => "calendar.html"}
+                  %i.glyphicon.glyphicon-calendar
+                  Calendar
+              %li
+                %a{:href => "stats.html"}
+                  %i.glyphicon.glyphicon-stats
+                  Statistics (Charts)
+              %li
+                %a{:href => "tables.html"}
+                  %i.glyphicon.glyphicon-list
+                  Tables
+              %li
+                %a{:href => "buttons.html"}
+                  %i.glyphicon.glyphicon-record
+                  Buttons
+              %li
+                %a{:href => "editors.html"}
+                  %i.glyphicon.glyphicon-pencil
+                  Editors
+              %li
+                %a{:href => "forms.html"}
+                  %i.glyphicon.glyphicon-tasks
+                  Forms
+              %li.submenu
+                %a{:href => "#"}
+                  %i.glyphicon.glyphicon-list
+                  Pages
+                  %span.caret.pull-right
+                / Sub menu
+                %ul
+                  %li
+                    %a{:href => "login.html"} Login
+                  %li
+                    %a{:href => "signup.html"} Signup
+        .col-md-10
+          .row
+            - if flash[:notice]
+              .alert.alert-success
+                = flash[:notice]
+            = yield
+    / page-content
+    = render 'footer'
