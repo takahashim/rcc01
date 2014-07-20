@@ -11,7 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140719175046) do
+ActiveRecord::Schema.define(version: 20140720152614) do
+
+  create_table "repos", force: true do |t|
+    t.string   "ref"
+    t.string   "commit_id"
+    t.string   "commit_timestamp"
+    t.string   "message"
+    t.string   "repository_name"
+    t.string   "repository_url"
+    t.text     "rawjson"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "provider",      null: false
