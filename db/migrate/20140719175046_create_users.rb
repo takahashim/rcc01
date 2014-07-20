@@ -5,6 +5,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string :uid, null: false
       t.string :nickname, null: false
       t.string :image_url, null: false
+      t.string :dropbox_token, null: true
       t.timestamps
     end
 

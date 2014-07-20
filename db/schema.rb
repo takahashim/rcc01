@@ -14,10 +14,11 @@
 ActiveRecord::Schema.define(version: 20140719175046) do
 
   create_table "users", force: true do |t|
-    t.string   "provider",   null: false
-    t.string   "uid",        null: false
-    t.string   "nickname",   null: false
-    t.string   "image_url",  null: false
+    t.string   "provider",      null: false
+    t.string   "uid",           null: false
+    t.string   "nickname",      null: false
+    t.string   "image_url",     null: false
+    t.string   "dropbox_token"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

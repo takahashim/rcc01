@@ -13,7 +13,7 @@ gem 'pg'
 gem 'devise'
 gem 'omniauth'
 gem 'omniauth-github'
-
+gem 'omniauth-dropbox-oauth2'
 
 gem 'jbuilder', '~> 2.0'
 gem 'sass-rails', '~> 4.0.3'
