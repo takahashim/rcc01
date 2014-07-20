@@ -91,13 +91,9 @@ group :test, :development do
   gem 'guard-sprockets2'
   gem 'json_expressions'
   gem 'launchy'
-  gem 'poltergeist'
-  gem 'rails-db-resetup'
   gem 'rb-fsevent', require: RUBY_PLATFORM.downcase =~ /darwin/ ? 'rb-fsevent' : false
   gem 'rspec', '~> 3.0'
   gem 'rspec-rails'
-  gem 'minitest'
-  gem 'shoulda-matchers', '2.5.0'
   gem 'spring'
   gem 'spring-commands-rspec'
   gem 'json_spec'
