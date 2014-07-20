@@ -127,6 +127,11 @@ GEM
       sprockets (~> 2.0)
     haml (4.0.5)
       tilt
+    haml-rails (0.5.3)
+      actionpack (>= 4.0.1)
+      activesupport (>= 4.0.1)
+      haml (>= 3.1, < 5.0)
+      railties (>= 4.0.1)
     hashie (3.2.0)
     highline (1.6.21)
     hike (1.2.3)
@@ -364,6 +369,7 @@ DEPENDENCIES
   font-awesome-rails
   guard-rspec
   guard-sprockets2
+  haml-rails
   hirb
   hirb-unicode
   i18n-tasks

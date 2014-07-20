@@ -19,7 +19,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'sass-rails', '~> 4.0.3'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'uglifier', '>= 1.3.0'
-# gem 'haml-rails'
+gem 'haml-rails'
 
 # Helpers
 gem 'active_decorator'
@@ -30,7 +30,6 @@ gem 'enumerize'
 gem 'validates_email_format_of'
 gem 'unf'
 # gem 'fog'
-# gem 'mini_magick'
 
 # Views
 gem 'bootstrap-sass'
@@ -78,6 +77,7 @@ group :development do
   gem 'view_source_map'
   gem 'i18n-tasks'
   gem 'thin'
+#  gem 'html2haml'
 end
 
 group :test, :development do
