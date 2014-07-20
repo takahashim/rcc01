@@ -69,7 +69,6 @@ group :development do
   gem 'hirb'
   gem 'hirb-unicode'
   gem 'letter_opener'
-  gem 'spring'
   gem 'pry-byebug'
   gem 'pry-doc'
   gem 'pry-rails'
@@ -79,6 +78,29 @@ group :development do
   gem 'view_source_map'
   gem 'i18n-tasks'
   gem 'thin'
+end
+
+group :test, :development do
+  gem 'brakeman'
+  gem 'database_cleaner'
+  gem 'timecop'
+  gem 'factory_girl'
+  gem 'factory_girl_rails'
+  gem 'faker'
+  gem 'guard-rspec', require: false
+  gem 'guard-sprockets2'
+  gem 'json_expressions'
+  gem 'launchy'
+  gem 'poltergeist'
+  gem 'rails-db-resetup'
+  gem 'rb-fsevent', require: RUBY_PLATFORM.downcase =~ /darwin/ ? 'rb-fsevent' : false
+  gem 'rspec', '~> 3.0'
+  gem 'rspec-rails'
+  gem 'minitest'
+  gem 'shoulda-matchers', '2.5.0'
+  gem 'spring'
+  gem 'spring-commands-rspec'
+  gem 'json_spec'
 end
 
 group :production, :staging do
