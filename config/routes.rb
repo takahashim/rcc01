@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   get 'pages/index'
   root to: 'pages#index'
   get '/auth/:provider/callback' => 'sessions#create'
+  get '/auth/logout' => 'sessions#destroy'
 
   get  'api/repo' => 'api#repo' ## for debug
   post 'api/repo' => 'api#repo'
