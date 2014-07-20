@@ -19,5 +19,19 @@ module Bs2
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
+    config.i18n.default_locale = :ja
+    config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}')]
+    config.i18n.enforce_available_locales = false
+    config.i18n.available_locales = [:ja, :en]
+
+    config.generators do |g|
+      g.view_specs false
+      g.helper_specs false
+      g.helper false
+      g.javascripts false
+      g.stylesheets false
+    end
+
+    config.action_mailer.default_url_options = { host: ENV['HOST'] }
   end
 end
