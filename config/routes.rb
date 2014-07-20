@@ -3,6 +3,9 @@ Rails.application.routes.draw do
   root to: 'pages#index'
   get '/auth/:provider/callback' => 'sessions#create'
 
+  get  'api/repo' => 'api#repo' ## for debug
+  post 'api/repo' => 'api#repo'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
