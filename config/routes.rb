@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   resources :repos
+  resources :commits do
+    put 'rebuild', on: :member
+  end
 
-  resources :commits
 
   get 'pages/index'
   root to: 'pages#index'

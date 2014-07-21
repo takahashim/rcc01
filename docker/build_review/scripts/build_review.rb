@@ -6,7 +6,8 @@ require 'shellwords'
 require 'yaml'
 
 GITHUB_URL = ARGV[0]
-DROPBOX_ACCESS_TOKEN = ARGV[1]
+COMMIT_ID = ARGV[1]
+DROPBOX_ACCESS_TOKEN = ARGV[2]
 REPO_NAME = "repo"
 
 def find_review_project(root)
@@ -45,6 +46,13 @@ FileUtils.rm_rf(REPO_NAME)
 ret = system("git", "clone", GITHUB_URL, REPO_NAME)
 if !ret
   error("cannot get repo: #{GITHUB_URL}")
+end
+
+if COMMIT_ID
+  ret = system("cd #{REPO_NAME} && git checkout #{Shellwords.shellescape(COMMIT_ID)}")
+  if !ret
+    error("cannot checkout ID: #{COMMIT_ID}")
+  end
 end
 
 path = find_review_project(REPO_NAME)

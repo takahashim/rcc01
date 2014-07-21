@@ -4,6 +4,7 @@
   .content-box-large
     .panel-heading
       .panel-title Show Commit
+      = link_to 'Rebuild', rebuild_commit_path(@commit), method: :put
     .panel-body
       %table.table
         %tbody
