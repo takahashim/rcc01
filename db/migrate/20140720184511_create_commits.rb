@@ -12,8 +12,8 @@ class CreateCommits < ActiveRecord::Migration
       t.string :commit_timestamp
       t.string :commit_author_name
       t.string :commit_author_username
-      t.string :commit_commiter_name
-      t.string :commit_commiter_username
+      t.string :commit_committer_name
+      t.string :commit_committer_username
       t.text   :commit_message
       t.string :repository_name
       t.string :repository_url
