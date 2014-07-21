@@ -1,32 +1,33 @@
-%h1 Listing commits
+.col-md-10
+  .content-box-large
+    .panel-heading
+      .panel-title Commits History
+    .panel-body
+      %table
+        %thead
+          %tr
+            %th Repo
+            %th Provider
+            %th Ref
+            %th Commit ID
+            %th Commit Timestamp
+            %th Commit Message
+            %th Repository name
+            %th
+            %th
+            %th
 
-%table
-  %tr
-    %th Repo
-    %th Provider
-    %th Ref
-    %th Commit
-    %th Commit timestamp
-    %th Message
-    %th Repository name
-    %th Repository url
-    %th Rawjson
-    %th
-    %th
-    %th
-
-  - @commits.each do |commit|
-    %tr
-      %td= commit.repo_id
-      %td= commit.provider
-      %td= commit.ref
-      %td= commit.commit_id
-      %td= commit.commit_timestamp
-      %td= commit.message
-      %td= commit.repository_name
-      %td= commit.repository_url
-      %td= commit.rawjson
-      %td= link_to 'Show', commit
-      %td= link_to 'Edit', edit_commit_path(commit)
-      %td= link_to 'Destroy', commit, :method => :delete, :data => { :confirm => 'Are you sure?' }
+        - @commits.each do |commit|
+          %tbody
+            %tr
+              %td= commit.repo_id
+              %td= commit.provider
+              %td= commit.ref
+              %td= commit.commit_id
+              %td= commit.commit_timestamp
+              %td= commit.commit_message
+              %td= commit.repository_name
+              %td= link_to 'Show', commit
+              %td= link_to 'Edit', edit_commit_path(commit)
+              %td= link_to 'Destroy', commit, :method => :delete, :data => { :confirm => 'Are you sure?' }
 

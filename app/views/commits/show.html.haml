@@ -1,33 +1,46 @@
 %p#notice= notice
 
-%p
-  %b Repo:
-  = @commit.repo_id
-%p
-  %b Provider:
-  = @commit.provider
-%p
-  %b Ref:
-  = @commit.ref
-%p
-  %b Commit:
-  = @commit.commit_id
-%p
-  %b Commit timestamp:
-  = @commit.commit_timestamp
-%p
-  %b Message:
-  = @commit.message
-%p
-  %b Repository name:
-  = @commit.repository_name
-%p
-  %b Repository url:
-  = @commit.repository_url
-%p
-  %b Rawjson:
-  = @commit.rawjson
-
-= link_to 'Edit', edit_commit_path(@commit)
-\|
-= link_to 'Back', commits_path
+.col-md-10
+  .content-box-large
+    .panel-heading
+      .panel-title Show Commit
+    .panel-body
+      %table.table
+        %tbody
+          %tr
+            %th Repo:
+            %td
+              = @commit.repo_id
+          %tr
+            %th Provider:
+            %td
+              = @commit.provider
+          %tr
+            %th Ref:
+            %td
+              = @commit.ref
+          %tr
+            %th Commit:
+            %td
+              = @commit.commit_id
+          %tr
+            %th Commit timestamp:
+            %td
+              = @commit.commit_timestamp
+          %tr
+            %th Message:
+            %td
+              = @commit.commit_message
+          %tr
+            %th Repository name:
+            %td
+              = @commit.repository_name
+          %tr
+            %th Repository url:
+            %td
+              = @commit.repository_url
+          %tr
+            %th Rawjson:
+            %td
+              = @commit.rawjson
+      = link_to 'Back', commits_path, class: "btn btn-default btn-sm"
