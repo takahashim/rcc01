@@ -12,24 +12,6 @@ class CommitsController < ApplicationController
   def show
   end
 
-  # GET /commits/1/edit
-  def edit
-  end
-
-  # PATCH/PUT /commits/1
-  # PATCH/PUT /commits/1.json
-  def update
-    respond_to do |format|
-      if @commit.update(commit_params)
-        format.html { redirect_to @commit, notice: 'Commit was successfully updated.' }
-        format.json { render :show, status: :ok, location: @commit }
-      else
-        format.html { render :edit }
-        format.json { render json: @commit.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_commit
