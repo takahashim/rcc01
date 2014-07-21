@@ -1,15 +1,27 @@
 %p#notice= notice
 
-%p
-  %b Provider:
-  = @repo.provider
-%p
-  %b Branch:
-  = @repo.branch
-%p
-  %b User:
-  = @repo.user
-
-= link_to 'Edit', edit_repo_path(@repo)
-\|
-= link_to 'Back', repos_path
+.col-md-6
+  .content-box-large
+    .panel-heading
+      .panel-title Show Repo
+    .panel-body
+      %table.table
+        %tbody
+          %tr
+            %th Provider
+            %td
+              = @repo.provider
+          %tr
+            %th Name
+            %td
+              = @repo.name
+          %tr
+            %th Branch
+            %td
+              = @repo.branch
+          %tr
+            %th User
+            %td
+              = @repo.user.nickname
+      = link_to 'Edit', edit_repo_path(@repo), class: "btn btn-primary btn-sm"
+      = link_to 'Back', repos_path, class: "btn btn-default btn-sm"

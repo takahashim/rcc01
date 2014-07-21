@@ -1,5 +1,7 @@
-%h1 New repo
-
-= render 'form'
-
-= link_to 'Back', repos_path
+.col-md-10
+  .content-box-large
+    .panel-heading
+      .panel-title New Repository
+    .panel-body
+      = render('form')
+      = link_to 'Back', repos_path, class: "btn btn-default btn-sm"

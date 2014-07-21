@@ -1,23 +1,29 @@
-%h1 Listing repos
+.col-md-10
+  .content-box-large
+    .panel-heading
+      .panel-title Repositories
+    .panel-body
+      %table.table
+        %thead
+          %tr
+            %th Provider
+            %th Name
+            %th Branch
+            %th
+            %th
+            %th
+        %tbody
+        - @repos.each do |repo|
+          %tr
+            %td= repo.provider
+            %td= repo.name
+            %td= repo.branch
+            %td
+              = link_to 'Show', repo, class: "btn btn-default btn-sm"
+            %td
+              = link_to 'Edit', edit_repo_path(repo), class: "btn btn-default btn-sm"
+            %td
+              = link_to 'Destroy', repo, method: :delete, data: { confirm: 'Are you sure?' }, class: "button btn btn-danger btn-sm"
 
-%table
-  %tr
-    %th Provider
-    %th Name
-    %th Branch
-    %th
-    %th
-    %th
-
-  - @repos.each do |repo|
-    %tr
-      %td= repo.provider
-      %td= repo.name
-      %td= repo.branch
-      %td= link_to 'Show', repo
-      %td= link_to 'Edit', edit_repo_path(repo)
-      %td= link_to 'Destroy', repo, :method => :delete, :data => { :confirm => 'Are you sure?' }
-
-%br
-
-= link_to 'New Repo', new_repo_path
+      %br
+    = link_to 'New Repo', new_repo_path, class: "btn btn-primary btn-sm"

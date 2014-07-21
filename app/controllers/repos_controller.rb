@@ -27,6 +27,7 @@ class ReposController < ApplicationController
   def create
     @repo = Repo.new(repo_params)
     @repo.provider = "github"
+    @repo.user = current_user
 
     respond_to do |format|
       if @repo.save
@@ -71,6 +72,6 @@ class ReposController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def repo_params
-      params.require(:repo).permit(:provider, :branch, :user_id)
+      params.require(:repo).permit(:name, :branch)
     end
 end
