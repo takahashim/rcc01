@@ -8,8 +8,8 @@ Rails.application.routes.draw do
   get '/auth/:provider/callback' => 'sessions#create'
   get '/auth/logout' => 'sessions#destroy'
 
-  get  'api/repo' => 'api#repo' ## for debug
-  post 'api/repo' => 'api#repo'
+  get  'api/commit' => 'api#commit' ## for debug
+  post 'api/commit' => 'api#commit'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

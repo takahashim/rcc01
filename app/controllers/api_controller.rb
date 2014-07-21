@@ -2,7 +2,11 @@ class ApiController < ApplicationController
   protect_from_forgery with: :null_session
 
   def commit
-    log.warn params.inspect
+    params["head_commit"] ||= Has.new
+    params["head_commit"]["author"] ||= Has.new
+    params["head_commit"]["committer"] ||= Has.new
+    params["repository"] ||= Has.new
+    params["repository"]["owner"] ||= Has.new
     @commit = Commit.create(
                         provider: "github",
                         ref: params["ref"],
