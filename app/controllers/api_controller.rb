@@ -29,5 +29,13 @@ class ApiController < ApplicationController
                         repository_master_branch: params["repository"]["master_branch"],
                         rawjson: params["api"].to_json
                         )
+
+    user = User.find_by(nickname: @commit.repository_owner_name)
+    return unless user
+
+    repo = Repo.find_by(name: @commit.repository_name, user_id: user.id)
+    return unless repo
+
+    BuildReviewWorker.perform_async(user.id, repo.id)
   end
 end

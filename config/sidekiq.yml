@@ -1,0 +1,13 @@
+#
+# Config file for Sidekiq
+#
+# usage:
+#   $ bundle exec sidekiq -C config/sidekiq.yml
+#
+:verbose: false
+:pidfile: ./tmp/pids/sidekiq.pid
+:logfile: ./log/sidekiq.log
+:concurrency:  10
+:queues:
+  - default
+  - build_review
