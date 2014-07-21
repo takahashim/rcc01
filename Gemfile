@@ -10,7 +10,6 @@ gem 'rails', '4.1.4'
 gem 'pg'
 
 # Authentication
-gem 'devise'
 gem 'omniauth'
 gem 'omniauth-github'
 gem 'omniauth-dropbox-oauth2'
