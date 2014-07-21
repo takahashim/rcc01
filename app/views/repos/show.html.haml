@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Provider:
+  = @repo.provider
+%p
+  %b Branch:
+  = @repo.branch
+%p
+  %b User:
+  = @repo.user
+
+= link_to 'Edit', edit_repo_path(@repo)
+\|
+= link_to 'Back', repos_path

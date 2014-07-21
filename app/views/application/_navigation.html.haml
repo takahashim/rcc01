@@ -2,17 +2,21 @@
   %nav.collapse.navbar-collapse.bs-navbar-collapse.navbar-right{:role => "navigation"}
     %ul.nav.navbar-nav
       %li.dropdown
-        - if user_signed_in?
+        - if signed_in?
           %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
             = current_user.nickname
             %b.caret
           %ul.dropdown-menu.animated.fadeInUp
             %li
-              %a{:href => "/auth/logout"} Logout
+              %a{:href => "/auth/logout"}
+                %span.octicon.octicon-sign-out
+                Logout
         - else
           %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
             guest
             %b.caret
           %ul.dropdown-menu.animated.fadeInUp
             %li
-              %a{:href => "/auth/github"} Login
+              %a{:href => "/auth/github"}
+                %span.octicon.octicon-sign-in
+                Login

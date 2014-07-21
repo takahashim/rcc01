@@ -1,0 +1,33 @@
+%p#notice= notice
+
+%p
+  %b Repo:
+  = @commit.repo_id
+%p
+  %b Provider:
+  = @commit.provider
+%p
+  %b Ref:
+  = @commit.ref
+%p
+  %b Commit:
+  = @commit.commit_id
+%p
+  %b Commit timestamp:
+  = @commit.commit_timestamp
+%p
+  %b Message:
+  = @commit.message
+%p
+  %b Repository name:
+  = @commit.repository_name
+%p
+  %b Repository url:
+  = @commit.repository_url
+%p
+  %b Rawjson:
+  = @commit.rawjson
+
+= link_to 'Edit', edit_commit_path(@commit)
+\|
+= link_to 'Back', commits_path

@@ -1,0 +1,37 @@
+= form_for @commit do |f|
+  - if @commit.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@commit.errors.count, "error")} prohibited this commit from being saved:"
+      %ul
+        - @commit.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :repo_id
+    = f.number_field :repo_id
+  .field
+    = f.label :provider
+    = f.text_field :provider
+  .field
+    = f.label :ref
+    = f.text_field :ref
+  .field
+    = f.label :commit_id
+    = f.text_field :commit_id
+  .field
+    = f.label :commit_timestamp
+    = f.text_field :commit_timestamp
+  .field
+    = f.label :message
+    = f.text_area :message
+  .field
+    = f.label :repository_name
+    = f.text_field :repository_name
+  .field
+    = f.label :repository_url
+    = f.text_field :repository_url
+  .field
+    = f.label :rawjson
+    = f.text_area :rawjson
+  .actions
+    = f.submit 'Save'

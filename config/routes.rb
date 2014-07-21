@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :repos
+
+  resources :commits
+
   get 'pages/index'
   root to: 'pages#index'
   get '/auth/:provider/callback' => 'sessions#create'

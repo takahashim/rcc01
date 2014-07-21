@@ -14,7 +14,7 @@
             / Logo
             .logo
               %h1
-                %a{:href => "/"} DocBuild
+                %a{:href => "/"} Build
           .col-md-5
             .row
               .col-lg-12
@@ -32,48 +32,47 @@
               / Main menu
               %li.current
                 %a{:href => "/"}
-                  %i.glyphicon.glyphicon-home
+                  %span.octicon.octicon-home
                   Dashboard
               %li
-                %a{:href => "calendar.html"}
-                  %i.glyphicon.glyphicon-calendar
-                  Calendar
+                %a{:href => "/repos"}
+                  %span.octicon.octicon-repo
+                  Repository
+              %li
+                %a{:href => "/commits"}
+                  %span.octicon.octicon-list-unordered
+                  Commits
+              %li
+                %a{:href => "/auth/dropbox_oauth2"}
+                  %i.fa.fa-dropbox
+                  Dropbox
               %li
                 %a{:href => "stats.html"}
-                  %i.glyphicon.glyphicon-stats
+                  %span.octicon.octicon-graph
                   Statistics (Charts)
               %li
-                %a{:href => "tables.html"}
-                  %i.glyphicon.glyphicon-list
-                  Tables
-              %li
                 %a{:href => "buttons.html"}
-                  %i.glyphicon.glyphicon-record
-                  Buttons
+                  %span.octicon.octicon-mail
+                  Message
               %li
                 %a{:href => "editors.html"}
-                  %i.glyphicon.glyphicon-pencil
-                  Editors
+                  %span.octicon.octicon-history
+                  History
               %li
                 %a{:href => "forms.html"}
-                  %i.glyphicon.glyphicon-tasks
-                  Forms
-              %li.submenu
-                %a{:href => "#"}
-                  %i.glyphicon.glyphicon-list
-                  Pages
-                  %span.caret.pull-right
-                / Sub menu
-                %ul
-                  %li
-                    %a{:href => "login.html"} Login
-                  %li
-                    %a{:href => "signup.html"} Signup
+                  %span.octicon.octicon-gear
+                  Settings
         .col-md-10
           .row
             - if flash[:notice]
-              .alert.alert-success
+              .alert.alert-success.alert-dismissible
                 = flash[:notice]
+            - if flash[:alert]
+              .alert.alert-danger.alert-dismissible
+                = flash[:alert]
+            - if flash[:warning]
+              .alert.alert-warning.alert-dismissible
+                = flash[:warning]
             = yield
     / page-content
     = render 'footer'

@@ -19,7 +19,7 @@ class SessionsController < ApplicationController
 
 
   private
-  def auth_via_dropbox
+  def auth_via_dropbox(auth_hash)
     if session[:user_id]
       user = User.find(session[:user_id])
       user.dropbox_token = auth_hash.credentials.token

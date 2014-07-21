@@ -77,6 +77,7 @@ group :development do
   gem 'view_source_map'
   gem 'i18n-tasks'
   gem 'thin'
+  gem "rails-erd"
 #  gem 'html2haml'
 end
 

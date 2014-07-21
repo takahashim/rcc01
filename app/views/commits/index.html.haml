@@ -1,0 +1,35 @@
+%h1 Listing commits
+
+%table
+  %tr
+    %th Repo
+    %th Provider
+    %th Ref
+    %th Commit
+    %th Commit timestamp
+    %th Message
+    %th Repository name
+    %th Repository url
+    %th Rawjson
+    %th
+    %th
+    %th
+
+  - @commits.each do |commit|
+    %tr
+      %td= commit.repo_id
+      %td= commit.provider
+      %td= commit.ref
+      %td= commit.commit_id
+      %td= commit.commit_timestamp
+      %td= commit.message
+      %td= commit.repository_name
+      %td= commit.repository_url
+      %td= commit.rawjson
+      %td= link_to 'Show', commit
+      %td= link_to 'Edit', edit_commit_path(commit)
+      %td= link_to 'Destroy', commit, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Commit', new_commit_path

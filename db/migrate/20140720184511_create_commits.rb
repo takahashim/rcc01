@@ -1,13 +1,15 @@
-class CreateRepos < ActiveRecord::Migration
+class CreateCommits < ActiveRecord::Migration
   def change
-    create_table :repos do |t|
+    create_table :commits do |t|
+      t.references :repo, index: true
+      t.string :provider
       t.string :ref
       t.string :commit_id
       t.string :commit_timestamp
-      t.string :message
+      t.text :message
       t.string :repository_name
       t.string :repository_url
-      t.text   :rawjson
+      t.text :rawjson
 
       t.timestamps
     end
