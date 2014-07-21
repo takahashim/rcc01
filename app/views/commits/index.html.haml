@@ -7,7 +7,7 @@
         %thead
           %tr
             %th repository
-            %th Commit
+            %th Head Commit
             %th Branch
             %th Timestamp
             %th
@@ -17,7 +17,9 @@
           - @commits.each do |commit|
             %tr
               %td= link_to commit.repository_name, commit.repository_url
-              %td= link_to "#{commit.commit_id.to_s.slice(0,7)}", commit.commit_url
+              %td
+                = link_to "#{commit.commit_id.to_s.slice(0,7)}", commit.commit_url
+                = link_to "(diff)", commit.compare
               %td= commit.ref.to_s.gsub(%r|^.*/|,"")
               %td= commit.commit_timestamp
               %td{rowspan:2}= link_to 'Show', commit, class: "btn btn-default btn-sm"

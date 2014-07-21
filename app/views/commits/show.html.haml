@@ -8,10 +8,6 @@
       %table.table
         %tbody
           %tr
-            %th Repo:
-            %td
-              = @commit.repo_id
-          %tr
             %th Provider:
             %td
               = @commit.provider
@@ -20,11 +16,23 @@
             %td
               = @commit.ref
           %tr
+            %th Compare:
+            %td
+              = link_to "#{@commit.before.to_s.slice(0,7)}...#{@commit.after.to_s.slice(0,7)}", @commit.compare
+          %tr
             %th Commit:
             %td
-              = @commit.commit_id
+              = link_to @commit.commit_id, @commit.commit_url
           %tr
-            %th Commit timestamp:
+            %th Commit Author:
+            %td
+              = link_to "#{@commit.commit_author_name} (#{@commit.commit_author_username})", "https://github.com/#{@commit.commit_author_username}"
+          %tr
+            %th Commit Committer:
+            %td
+              = link_to "#{@commit.commit_committer_name} (#{@commit.commit_committer_username})", "https://github.com/#{@commit.commit_committer_username}"
+          %tr
+            %th Commit Timestamp:
             %td
               = @commit.commit_timestamp
           %tr
@@ -32,15 +40,31 @@
             %td
               = @commit.commit_message
           %tr
-            %th Repository name:
+            %th Repository Name:
             %td
               = @commit.repository_name
           %tr
-            %th Repository url:
+            %th Repository URL:
             %td
               = @commit.repository_url
+          %tr
+            %th Repository Master Branch:
+            %td
+              = @commit.repository_master_branch
+          %tr
+            %th Repository Owner Name:
+            %td
+              = @commit.repository_owner_name
+          %tr
+            %th Repository Private:
+            %td
+              = @commit.repository_private
           %tr
             %th Rawjson:
             %td
               = @commit.rawjson
+          %tr
+            %th Created at:
+            %td
+              = @commit.created_at
       = link_to 'Back', commits_path, class: "btn btn-default btn-sm"
