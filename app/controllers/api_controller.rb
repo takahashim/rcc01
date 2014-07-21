@@ -39,6 +39,6 @@ class ApiController < ApplicationController
     @commit.repo = repo
     @commit.save!
 
-    BuildReviewWorker.perform_async(user.id, repo.id)
+    BuildReviewWorker.perform_async(user.id, repo.id, @commit.id)
   end
 end

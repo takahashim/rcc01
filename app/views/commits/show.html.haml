@@ -60,6 +60,18 @@
             %td
               = @commit.repository_private
           %tr
+            %th Build started:
+            %td
+              = @commit.build.try(:started_at) || "-"
+          %tr
+            %th Build finished:
+            %td
+              = @commit.build.try(:finished_at) || "-"
+          %tr
+            %th Build log:
+            %td
+              = @commit.build.try(:log) || "-"
+          %tr
             %th Rawjson:
             %td
               = @commit.rawjson
