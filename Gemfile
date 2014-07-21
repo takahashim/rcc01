@@ -43,6 +43,7 @@ gem 'turbolinks'
 # Server
 gem 'puma'
 gem 'rack-rewrite'
+gem 'sidekiq'
 
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
