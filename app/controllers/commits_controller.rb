@@ -12,29 +12,8 @@ class CommitsController < ApplicationController
   def show
   end
 
-  # GET /commits/new
-  def new
-    @commit = Commit.new
-  end
-
   # GET /commits/1/edit
   def edit
-  end
-
-  # POST /commits
-  # POST /commits.json
-  def create
-    @commit = Commit.new(commit_params)
-
-    respond_to do |format|
-      if @commit.save
-        format.html { redirect_to @commit, notice: 'Commit was successfully created.' }
-        format.json { render :show, status: :created, location: @commit }
-      else
-        format.html { render :new }
-        format.json { render json: @commit.errors, status: :unprocessable_entity }
-      end
-    end
   end
 
   # PATCH/PUT /commits/1
@@ -51,16 +30,6 @@ class CommitsController < ApplicationController
     end
   end
 
-  # DELETE /commits/1
-  # DELETE /commits/1.json
-  def destroy
-    @commit.destroy
-    respond_to do |format|
-      format.html { redirect_to commits_url, notice: 'Commit was successfully destroyed.' }
-      format.json { head :no_content }
-    end
-  end
-
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_commit
@@ -69,6 +38,16 @@ class CommitsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def commit_params
-      params.require(:commit).permit(:repo_id, :provider, :ref, :commit_id, :commit_timestamp, :message, :repository_name, :repository_url, :rawjson)
+      params.require(:commit).permit(
+                                     :ref,
+                                     :after,
+                                     :before,
+                                     :compare,
+                                     :commit_id,
+                                     :commit_timestamp,
+                                     :commit_message,
+                                     :repository_name,
+                                     :repository_url
+                                     )
     end
 end
