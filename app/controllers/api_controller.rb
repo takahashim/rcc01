@@ -36,6 +36,9 @@ class ApiController < ApplicationController
     repo = Repo.find_by(name: @commit.repository_name, user_id: user.id)
     return unless repo
 
+    @commit.repo = repo
+    @commit.save!
+
     BuildReviewWorker.perform_async(user.id, repo.id)
   end
 end
