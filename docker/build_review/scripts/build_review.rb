@@ -61,9 +61,11 @@ Dir.chdir(path) do
   bookname = get_bookname(conf)
   system("review-pdfmaker", conf)
   system("review-epubmaker", conf)
-  epub = File.open("book.epub")
-  pdf  = File.open("book.pdf")
-  client.put_file(bookname+".epub", epub, true)
-  client.put_file(bookname+".pdf", pdf, true)
+  epubfile = bookname+".epub"
+  pdffile = bookname+".pdf"
+  epub = File.open(epubfile)
+  pdf  = File.open(pdffile)
+  client.put_file(epubfile, epub, true)
+  client.put_file(pdffile, pdf, true)
 end
 
