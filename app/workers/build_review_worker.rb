@@ -17,7 +17,7 @@ class BuildReviewWorker
 
     user = User.find(user_id)
     repo = Repo.find(repo_id)
-    commit = Repo.find(commit_id)
+    commit = Commit.find(commit_id)
     repository_url = repo.repository_url
     dropbox_token = user.dropbox_token
 
