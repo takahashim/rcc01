@@ -26,7 +26,8 @@ class BuildReviewWorker
     args = Shellwords.shelljoin(["docker","run","--rm","-t","-i",DOCKER_ID,DOCKER_SCRIPT,repository_url,commit.commit_id,dropbox_token])
     logger.info("docker command:" + args.to_s)
     buildlog, e, s = Open3.capture3("#{args} 2>&1")
-    logger.info("docker log:" + buildlog)
+    logger.info("docker log:#{buildlog}")
+    logger.info("error log: #{e}")
     finished_at = Time.now
 
     @build.finished_at = finished_at
