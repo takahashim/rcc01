@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(version: 20140721145100) do
 
   create_table "builds", force: true do |t|
     t.integer  "commit_id"
-    t.text     "log"
+    t.text     "buildlog"
     t.datetime "started_at"
     t.datetime "finished_at"
     t.datetime "created_at"
