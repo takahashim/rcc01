@@ -24,7 +24,7 @@ class BuildReviewWorker
     logger.info("build: user_id:#{user_id}, repository:#{repository_url}")
     args = Shellwords.shelljoin(["docker","run","--rm","-t","-i",DOCKER_ID,DOCKER_SCRIPT,repository_url,commit.commit_id,dropbox_token])
     logger.info("docker command:" + args.to_s)
-    output = `#{args}`
+    output = `#{args} 2>&1`
     finished_at = Time.now
 
     @build.finished_at = finished_at
