@@ -1,4 +1,5 @@
 require 'shellwords'
+require 'open3'
 class BuildReviewWorker
   include Sidekiq::Worker
   sidekiq_options queue: :build_review, retry: false
@@ -24,7 +25,7 @@ class BuildReviewWorker
     logger.info("build: user_id:#{user_id}, repository:#{repository_url}")
     args = Shellwords.shelljoin(["docker","run","--rm","-t","-i",DOCKER_ID,DOCKER_SCRIPT,repository_url,commit.commit_id,dropbox_token])
     logger.info("docker command:" + args.to_s)
-    buildlog = `#{args} 2>&1`
+    buildlog, e, s = Open3.capture3("#{args} 2>&1")
     logger.info("docker log:" + buildlog)
     finished_at = Time.now
 
