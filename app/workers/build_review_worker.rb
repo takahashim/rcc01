@@ -13,7 +13,7 @@ class BuildReviewWorker
     logger.info("start")
     started_at = Time.now
     @build = Build.find_or_create_by(commit_id: commit_id)
-    @build.update(started_at: started_at, finished_at: nil, log: nil)
+    @build.update(started_at: started_at, finished_at: nil, buildlog: nil)
 
     user = User.find(user_id)
     repo = Repo.find(repo_id)
@@ -24,12 +24,12 @@ class BuildReviewWorker
     logger.info("build: user_id:#{user_id}, repository:#{repository_url}")
     args = Shellwords.shelljoin(["docker","run","--rm","-t","-i",DOCKER_ID,DOCKER_SCRIPT,repository_url,commit.commit_id,dropbox_token])
     logger.info("docker command:" + args.to_s)
-    dockerlog = `#{args} 2>&1`
-    logger.info("docker log:" + dockerlog)
+    buildlog = `#{args} 2>&1`
+    logger.info("docker log:" + buildlog)
     finished_at = Time.now
 
     @build.finished_at = finished_at
-    @build.log = dockerlog
+    @build.buildlog = buildlog
     @build.save
 
     logger.info("end")
