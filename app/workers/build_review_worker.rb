@@ -1,5 +1,5 @@
 require 'shellwords'
-require 'open3'
+require 'tempfile'
 class BuildReviewWorker
   include Sidekiq::Worker
   sidekiq_options queue: :build_review, retry: false
@@ -25,15 +25,22 @@ class BuildReviewWorker
     logger.info("build: user_id:#{user_id}, repository:#{repository_url}")
     args = Shellwords.shelljoin(["docker","run","--rm","-t","-i",DOCKER_ID,DOCKER_SCRIPT,repository_url,commit.commit_id,dropbox_token])
     logger.info("docker command:" + args.to_s)
-    buildlog, e, s = Open3.capture3("#{args} 2>&1")
+    tf = Tempfile.open("dockerlog")
+    begin
+      system("#{args} > #{tf.path}")
+      tf.close
+      tf.open
+      buildlog = tf.read
+    ensure
+      tf.close!
+    end
+
     logger.info("docker log:#{buildlog}")
-    logger.info("error log: #{e}")
     finished_at = Time.now
 
     @build.finished_at = finished_at
     @build.buildlog = buildlog
     @build.save
-
     logger.info("end")
     logger.close
   end
