@@ -31,6 +31,7 @@ class ReposController < ApplicationController
 
     respond_to do |format|
       if @repo.save
+        set_hook(@repo)
         format.html { redirect_to @repo, notice: 'Repo was successfully created.' }
         format.json { render :show, status: :created, location: @repo }
       else
@@ -45,6 +46,7 @@ class ReposController < ApplicationController
   def update
     respond_to do |format|
       if @repo.update(repo_params)
+        set_hook(@repo)
         format.html { redirect_to @repo, notice: 'Repo was successfully updated.' }
         format.json { render :show, status: :ok, location: @repo }
       else
@@ -74,4 +76,19 @@ class ReposController < ApplicationController
     def repo_params
       params.require(:repo).permit(:name, :branch)
     end
+
+    def set_hook(repo)
+      if repo.provider == "github"
+        client = Octokit::Client.new(access_token: session[:github_access_token])
+        client.create_hook(
+                           "#{repo.user.nickname}/#{repo.name}",
+                           "roccou",
+                           { url: api_commit_url,
+                             content_type: "json" },
+                           { events: ['push', 'pull_request'],
+                             :active => true }
+                           )
+      end
+    end
+
 end

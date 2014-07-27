@@ -5,6 +5,8 @@ class SessionsController < ApplicationController
     if provider == "dropbox_oauth2"
       auth_via_dropbox(auth_hash)
       return
+    elsif provider == "github"
+      auth_via_github(auth_hash)
     end
 
     user = User.find_or_create_from_auth_hash(auth_hash)
@@ -28,5 +30,9 @@ class SessionsController < ApplicationController
     else
       redirect_to root_path, notice: "ログインしてください"
     end
+  end
+
+  def auth_via_github(auth_hash)
+    session[:github_access_token] = auth_hash.credentials.token
   end
 end
