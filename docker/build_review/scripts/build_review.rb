@@ -43,13 +43,13 @@ end
 client = DropboxClient.new(DROPBOX_ACCESS_TOKEN)
 
 FileUtils.rm_rf(REPO_NAME)
-ret = system("git", "clone", GITHUB_URL, REPO_NAME)
+ret = system("git clone -q #{Shellwords.shellescape(GITHUB_URL)} #{REPO_NAME} 2>&1")
 if !ret
   error("cannot get repo: #{GITHUB_URL}")
 end
 
 if COMMIT_ID
-  ret = system("cd #{REPO_NAME} && git checkout #{Shellwords.shellescape(COMMIT_ID)}")
+  ret = system("cd #{REPO_NAME} && git checkout -q #{Shellwords.shellescape(COMMIT_ID)} 2>&1")
   if !ret
     error("cannot checkout ID: #{COMMIT_ID}")
   end
@@ -67,8 +67,8 @@ end
 
 Dir.chdir(path) do
   bookname = get_bookname(conf)
-  system("review-pdfmaker", conf)
-  system("review-epubmaker", conf)
+  system("review-pdfmaker #{Shellwords.shellescape(conf)} 2>&1")
+  system("review-epubmaker #{Shellwords.shellescape(conf)} 2>&1")
   epubfile = bookname+".epub"
   pdffile = bookname+".pdf"
   epub = File.open(epubfile)
