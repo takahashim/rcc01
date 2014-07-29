@@ -45,6 +45,10 @@ gem 'rack-rewrite'
 gem 'sidekiq'
 
 
+# Tools
+gem 'octokit'
+
+
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer',  platforms: :ruby
 
