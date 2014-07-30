@@ -82,7 +82,7 @@ class ReposController < ApplicationController
         client = Octokit::Client.new(access_token: session[:github_access_token])
         client.create_hook(
                            "#{repo.user.nickname}/#{repo.name}",
-                           "roccou",
+                           "web",
                            { url: api_commit_url,
                              content_type: "json" },
                            { events: ['push', 'pull_request'],
